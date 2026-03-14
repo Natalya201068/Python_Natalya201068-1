@@ -12,7 +12,6 @@ class CartShopPage:
         items = self.driver.find_elements(By.CLASS_NAME, locator)
         return items
 
-
     def click_checkout(self, locator):
         button_checkout = self.driver.find_element(By.ID, locator)
         self.driver.execute_script("arguments[0].scrollIntoView();",

@@ -13,7 +13,8 @@ class OrderShopPageAllure:
         self.total_txt = None
         self.total = None
 
-    @allure.step('Заполнить информацию о покупателе: найти поле ввода по {locator}, ввести {value}')
+    @allure.step('Заполнить информацию о покупателе: найти '
+                 'поле ввода по {locator}, ввести {value}')
     def information(self, locator, value) -> None:
         inform = self.driver.find_element(By.ID, locator)
         inform.clear()

@@ -13,13 +13,15 @@ class MainShopPageAllure:
     def open(self, url):
         self.driver.get(url)
 
-    @allure.step('Авторизоваться: найти поле ввода по {locator}, ввести {value}')
+    @allure.step('Авторизоваться: найти поле ввода по {locator}, ввести '
+                 '{value}')
     def input_login(self, locator, value) -> None:
         input_login = self.driver.find_element(By.ID, locator)
         input_login.clear()
         input_login.send_keys(value)
 
-    @allure.step('Перейти к списку товаров: найти кнопку по {locator}, кликнуть на нее')
+    @allure.step('Перейти к списку товаров: найти кнопку по {locator}, '
+                 'кликнуть на нее')
     def button_click(self, locator) -> None:
         login_button = self.driver.find_element(By.ID, locator)
         login_button.click()

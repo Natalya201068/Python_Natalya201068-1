@@ -9,9 +9,9 @@ class ProductShopPage:
         self.actions = ActionChains(driver)
 
     def add_products(self, locator):
-            product = self.driver.find_element(By.ID, locator)
-            self.driver.execute_script("arguments[0].scrollIntoView();", product)
-            self.actions.move_to_element(product).click().perform()
+        product = self.driver.find_element(By.ID, locator)
+        self.driver.execute_script("arguments[0].scrollIntoView();", product)
+        self.actions.move_to_element(product).click().perform()
 
     def go_to_cart(self, locator):
 

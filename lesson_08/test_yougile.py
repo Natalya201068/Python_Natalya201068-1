@@ -29,7 +29,11 @@ def test_create_new_project(api):
     status, project = api.create_new_project(title, user_id)
     assert status == 201
     assert project["id"] is not None
-    api.delete_project(project["id"])
+    status_code, response = api.delete_project(project["id"])
+    assert status_code == 200
+    status_code, response = api.get_new_project(project["id"])
+    assert status_code == 200, f"Получили {status_code}"
+    assert response["deleted"] is True
 
 
 def test_create_new_project_negative(api):
@@ -45,6 +49,7 @@ def test_change_new_project(api, temp_project):
     status, new_project = api.change_new_project(temp_project['id'], new_title, user_id)
     assert status == 200
     assert new_project is not None
+    api.delete_project(new_project["id"])
 
 
 def test_change_new_project_negative(api):
@@ -59,6 +64,7 @@ def test_get_new_project(api, temp_project):
     status, project_data = api.get_new_project(temp_project['id'])
     assert status == 200
     assert project_data['id'] == temp_project['id']
+    api.delete_project(project_data["id"])
 
 
 def test_get_new_project_negative(api):

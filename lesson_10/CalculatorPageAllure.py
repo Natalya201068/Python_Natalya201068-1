@@ -19,7 +19,8 @@ class CalculatorPageAllure:
         self.start_time = None
         self.end_time = None
 
-    @allure.step('Установить задержку. Дя этого найти элемент по {locator}, ввести значение {value}')
+    @allure.step('Установить задержку. Дя этого найти элемент по {locator}, '
+                 'ввести значение {value}')
     def find_element(self, locator, value) -> None:
         element = self.driver.find_element(By.CSS_SELECTOR, locator)
         element.clear()
@@ -30,7 +31,8 @@ class CalculatorPageAllure:
         element = self.driver.find_element(By.XPATH, locator)
         element.click()
 
-    @allure.step('Нажать кнопку "=": найти элемент по {locator} с помощью скролла, кликнуть')
+    @allure.step('Нажать кнопку "=": найти элемент по {locator} с помощью '
+                 'скролла, кликнуть')
     def click_equal_element(self, driver, locator) -> None:
         equal_element = self.driver.find_element(By.CLASS_NAME,
                                                  locator)

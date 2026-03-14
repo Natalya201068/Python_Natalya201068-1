@@ -68,7 +68,10 @@ class ProjectYouGile:
             'Authorization': token,
             'Content-Type': 'application/json'
         }
-        response = requests.delete(url, headers=headers)
+        data = {
+            "deleted": True
+        }
+        response = requests.put(url, headers=headers, json=data)
         status_code = response.status_code
         r = response.json()
         return status_code, r
